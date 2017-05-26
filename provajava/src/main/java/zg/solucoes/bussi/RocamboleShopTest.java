@@ -31,15 +31,17 @@ public class RocamboleShopTest {
         GroupPromotion groupPromotion = new GroupPromotion();
 
         promotions = new ArrayList<Promotion>();
-        promotions.add(groupPromotion);
+        groupPromotion = new GroupPromotion();
         groupPromotion.setMinGroup(3L);
         groupPromotion.setPriceWithDiscount(130.0);
+        promotions.add(groupPromotion);
         Mockito.when(productDao.get("A")).thenReturn(new Product("A", 50.0, promotions));
 
         promotions = new ArrayList<Promotion>();
-        promotions.add(groupPromotion);
+        groupPromotion = new GroupPromotion();
         groupPromotion.setMinGroup(2L);
         groupPromotion.setPriceWithDiscount(45.0);
+        promotions.add(groupPromotion);
         Mockito.when(productDao.get("B")).thenReturn(new Product("B", 30.0, promotions));
 
         promotions = new ArrayList<Promotion>();
@@ -54,7 +56,7 @@ public class RocamboleShopTest {
     }
 
     @Test
-    public void pdfTest() {
+    public void test1() {
         // Teste 1
         shop.add("A");
         Assert.assertEquals(shop.getTotal(), new Double(50.0));
@@ -78,6 +80,10 @@ public class RocamboleShopTest {
         Assert.assertEquals(shop.getTotal(), new Double(230.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(20.0));
 
+    }
+
+    @Test
+    public void test2() {
         // Teste 2
         shop.add("D");
         Assert.assertEquals(shop.getTotal(), new Double(15.0));
@@ -87,23 +93,11 @@ public class RocamboleShopTest {
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
         shop.add("B");
         Assert.assertEquals(shop.getTotal(), new Double(95.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
-        shop.add("A");
-        Assert.assertEquals(shop.getTotal(), new Double(145.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
-        shop.add("B");
-        Assert.assertEquals(shop.getTotal(), new Double(160.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(15.0));
-        shop.add("A");
-        Assert.assertEquals(shop.getTotal(), new Double(190.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(35.0));
-        shop.remove("A");
-        Assert.assertEquals(shop.getTotal(), new Double(160.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(15.0));
-        shop.remove("B");
-        Assert.assertEquals(shop.getTotal(), new Double(145.0));
-        Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
-// Teste 3
+    }
+
+    @Test
+    public void test3() {
+        // Teste 3
         shop.add("C");
         Assert.assertEquals(shop.getTotal(), new Double(20.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
@@ -122,6 +116,11 @@ public class RocamboleShopTest {
         shop.remove("C");
         Assert.assertEquals(shop.getTotal(), new Double(40.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
+
+    }
+
+    @Test
+    public void test4(){
         // Teste 4
         shop.add("C");
         Assert.assertEquals(shop.getTotal(), new Double(20.0));
