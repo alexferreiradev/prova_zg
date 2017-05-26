@@ -55,31 +55,32 @@ public class RocamboleShop implements BaseShop {
     }
 
     private void changeTotal(Product product, boolean isRemoved){
+        String productId = product.getId();
+        long totalProducts = 0L;
+        if (cashier.getTotalByProduct().size() > 0)
+            totalProducts = cashier.getTotalByProduct().get(productId);
+
         if (isRemoved){
-            String productId = product.getId();
-            Long totalProducts = cashier.getTotalByProduct().get(productId);
             totalProducts -= 1;
             cashier.getTotalByProduct().put(productId, totalProducts);
-            Double priceOfProduct = applyPromotion(product);
-            cashier.getPriceByProduct().put(productId, priceOfProduct);
-            cashier.getTotalProducts().add(product);
-        }else{
-            String productId = product.getId();
-            Long totalProducts = cashier.getTotalByProduct().get(productId);
-            totalProducts += 1;
-            cashier.getTotalByProduct().put(productId, totalProducts);
-            Double priceOfProduct = applyPromotion(product);
+            double priceOfProduct = applyPromotion(product);
             cashier.getPriceByProduct().put(productId, priceOfProduct);
             cashier.getTotalProducts().remove(product);
+        }else{
+            totalProducts += 1;
+            cashier.getTotalByProduct().put(productId, totalProducts);
+            double priceOfProduct = applyPromotion(product);
+            cashier.getPriceByProduct().put(productId, priceOfProduct);
+            cashier.getTotalProducts().add(product);
         }
     }
 
     private Double applyPromotion(Product product) {
         String productId = product.getId();
-        Long totalProducts = cashier.getTotalByProduct().get(productId);
+        long totalProducts = cashier.getTotalByProduct().get(productId);
         double lowerPrice = Double.MAX_VALUE;
         for (Promotion promotion : product.getPromotions()) {
-            Double price = promotion.applyDiscount(totalProducts, product);
+            double price = promotion.applyDiscount(totalProducts, product);
             if (price < lowerPrice)
                 lowerPrice = price;
         }
