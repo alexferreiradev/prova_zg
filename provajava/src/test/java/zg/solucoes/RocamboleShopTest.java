@@ -1,4 +1,4 @@
-package zg.solucoes.bussi;
+package zg.solucoes;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import zg.solucoes.bussi.RocamboleShop;
 import zg.solucoes.data.model.GroupPromotion;
 import zg.solucoes.data.model.PayLessAndCarryMorePromotion;
 import zg.solucoes.data.model.Product;
