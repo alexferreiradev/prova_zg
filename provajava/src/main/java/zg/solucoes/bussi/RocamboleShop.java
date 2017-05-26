@@ -84,6 +84,9 @@ public class RocamboleShop implements BaseShop {
             if (price < lowerPrice)
                 lowerPrice = price;
         }
+        if (lowerPrice == Double.MAX_VALUE){
+            lowerPrice = totalProducts * product.getUnitPrice();
+        }
 
         return lowerPrice;
     }
