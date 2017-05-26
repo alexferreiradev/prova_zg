@@ -1,5 +1,7 @@
 package zg.solucoes.data.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +16,10 @@ public class Cashier {
     private List<Product> totalProducts;
 
     public Cashier() {
+        total = 0.0;
+        priceByProduct = new HashMap<String, Double>();
+        totalByProduct = new HashMap<String, Long>();
+        totalProducts = new ArrayList<Product>();
     }
 
     public Cashier(Double total, Map<String, Double> priceByProduct, Map<String, Long> totalByProduct, List<Product> totalProducts) {
