@@ -57,7 +57,7 @@ public class RocamboleShop implements BaseShop {
     private void changeTotal(Product product, boolean isRemoved){
         String productId = product.getId();
         long totalProducts = 0L;
-        if (cashier.getTotalByProduct().size() > 0)
+        if (cashier.getTotalByProduct().containsKey(productId))
             totalProducts = cashier.getTotalByProduct().get(productId);
 
         if (isRemoved){
