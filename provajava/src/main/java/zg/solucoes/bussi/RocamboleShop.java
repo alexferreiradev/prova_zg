@@ -43,13 +43,17 @@ public class RocamboleShop implements BaseShop {
     }
 
     public Double getTotalDiscount() {
-        double total = 0;
+        double totalWithoutDiscount = 0;
         Set<Map.Entry<String, Long>> entries = cashier.getTotalByProduct().entrySet();
         for (Map.Entry<String, Long> entry : entries) {
             Product product = productDao.get(entry.getKey());
-            total += (product.getUnitPrice() * entry.getValue());
+            long value = 0;
+            if (entry.getValue() != null)
+                value = entry.getValue();
+            totalWithoutDiscount += (product.getUnitPrice() * value);
         }
-        double diff = total - getTotal();
+
+        double diff = totalWithoutDiscount - getTotal();
 
         return diff;
     }
