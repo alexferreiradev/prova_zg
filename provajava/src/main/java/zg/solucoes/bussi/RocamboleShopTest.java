@@ -34,23 +34,23 @@ public class RocamboleShopTest {
         promotions.add(groupPromotion);
         groupPromotion.setMinGroup(3L);
         groupPromotion.setPriceWithDiscount(130.0);
-        Mockito.when(productBaseDao.get("A")).thenReturn(new Product("A", 50.0, promotions));
+        Mockito.when(productDao.get("A")).thenReturn(new Product("A", 50.0, promotions));
 
         promotions = new ArrayList<Promotion>();
         promotions.add(groupPromotion);
         groupPromotion.setMinGroup(2L);
         groupPromotion.setPriceWithDiscount(45.0);
-        Mockito.when(productBaseDao.get("B")).thenReturn(new Product("B", 30.0, promotions));
+        Mockito.when(productDao.get("B")).thenReturn(new Product("B", 30.0, promotions));
 
         promotions = new ArrayList<Promotion>();
         PayLessAndCarryMorePromotion carryMorePromotion = new PayLessAndCarryMorePromotion();
         carryMorePromotion.setCarryTotal(3L);
         carryMorePromotion.setPayTotal(2L);
         promotions.add(carryMorePromotion);
-        Mockito.when(productBaseDao.get("C")).thenReturn(new Product("C", 20.0, promotions));
+        Mockito.when(productDao.get("C")).thenReturn(new Product("C", 20.0, promotions));
 
         promotions = new ArrayList<Promotion>();
-        Mockito.when(productBaseDao.get("D")).thenReturn(new Product("D", 15.0, promotions));
+        Mockito.when(productDao.get("D")).thenReturn(new Product("D", 15.0, promotions));
     }
 
     @Test
