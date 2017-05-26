@@ -127,13 +127,13 @@ public class RocamboleShopTest {
         Assert.assertEquals(shop.getTotal(), new Double(20.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
         shop.add("B");
-        Assert.assertEquals(shop.getTotal(), new Double(30.0));
+        Assert.assertEquals(shop.getTotal(), new Double(50.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
         shop.add("B");
-        Assert.assertEquals(shop.getTotal(), new Double(45.0));
+        Assert.assertEquals(shop.getTotal(), new Double(65.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(15.0));
         shop.remove("B");
-        Assert.assertEquals(shop.getTotal(), new Double(30.0));
+        Assert.assertEquals(shop.getTotal(), new Double(50.0));
         Assert.assertEquals(shop.getTotalDiscount(), new Double(0.0));
     }
 }
